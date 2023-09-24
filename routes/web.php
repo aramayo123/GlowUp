@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PromocionesController;
+use App\Http\Controllers\ServiciosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
+
+Route::resource('servicios', ServiciosController::class);
+Route::resource('promociones', PromocionesController::class);
