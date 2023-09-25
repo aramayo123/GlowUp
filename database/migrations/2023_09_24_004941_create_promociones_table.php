@@ -16,8 +16,6 @@ return new class extends Migration
         Schema::create('promociones', function (Blueprint $table) {
             $table->id();
             $table->string('nombre_promocion'); 
-            $table->bigInteger('id_servicio')->unsigned();
-            $table->foreign('id_servicio')->references('id')->on('servicios')->onDelete('cascade');
             $table->float('precio_promocion', 8, 2);
             $table->float('precio_oferta_promocion', 8, 2);
             $table->timestamps();
