@@ -6,7 +6,7 @@
 @endphp
 
 <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5 antialiased mx-auto" style="min-height: 688px;">
-    <div class="w-2/5 mx-auto mt-[150px] justify-center items-center">
+    <div class="w-2/5 mx-auto mt-10 justify-center items-center">
         <div class="w-full max-w-2xl max-h-full">
             <div class=" p-4 bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5">
                 <div class="flex justify-between items-center pb-4 mb-4 rounded-t border-b sm:mb-5 dark:border-gray-600">
@@ -38,7 +38,7 @@
                         </div>
                         <div>
                             <label for="precio_oferta_promocion" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Precio promocional</label>
-                            <input type="number" name="precio_oferta_promocion" id="precio_oferta_promocion" value="{{ $promocion->precio_oferta_promocion }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="$2999" required="">
+                            <input type="number" name="precio_oferta_promocion" id="precio_oferta_promocion" value="{{ $promocion->precio_oferta_promocion }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="$2999">
                             @error('precio_oferta_promocion')
                                 <p class="pt-4 text-red-500">{{ $message }}</p>
                             @enderror

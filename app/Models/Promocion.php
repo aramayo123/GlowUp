@@ -53,7 +53,7 @@ class Promocion extends Model
             $nuevo->already_modify = 1;
             $nuevo->update();
         }
-        $registros = Servicio_y_Promocion::all();
+        $registros = Servicio_y_Promocion::where('id_promocion', $this->id);
         foreach($registros as $registro){
             Log::debug("servicio en :".$registro->already_modify);
             if(!$registro->already_modify){
@@ -62,7 +62,7 @@ class Promocion extends Model
                 Log::debug("se paso a desactivo el servicio y promocion con id: ".$registro->id);
             }
         }
-
+        $registros = Servicio_y_Promocion::all();
         foreach($registros as $registro){
             $registro->already_modify = 0;
             $registro->update();

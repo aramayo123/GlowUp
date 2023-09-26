@@ -421,10 +421,7 @@ a{
 .item .check__icon{
     color: var(--first-color);
 }
-.card__items button{
-    margin: 0 auto;
-    margin-top: var(--mb-1);
-}
+
 /* GALLERY */
 .gallery{
     width: 100%;

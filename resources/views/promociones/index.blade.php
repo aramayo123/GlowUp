@@ -141,7 +141,12 @@
                                 <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $promocion->id }}</th>
                                 <td class="px-4 py-3">{{ $promocion->nombre_promocion }}</td>
                                 <td class="px-4 py-3">${{ $promocion->precio_promocion }}</td>
-                                <td class="px-4 py-3">${{ $promocion->precio_oferta_promocion }}</td>
+                                @if ($promocion->precio_oferta_promocion != null)
+                                    <td class="px-4 py-3">${{ $promocion->precio_oferta_promocion }}</td>
+                                @else
+                                    <td class="px-4 py-3">Sin precio promocional</td>
+                                @endif
+                                
                                 <td class="px-4 py-3 flex flex-col md:flex-row">
                                     <a href="{{ route('promociones.edit',$promocion) }}" class="flex w-full items-center py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-gray-700 dark:text-gray-200">
                                         <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" fill="currentColor" aria-hidden="true">

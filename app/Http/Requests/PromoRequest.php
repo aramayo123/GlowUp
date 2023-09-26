@@ -26,7 +26,7 @@ class PromoRequest extends FormRequest
         $rules =  [
             'nombre_promocion' => 'required|min:3',
             'precio_promocion' => 'required|numeric',
-            'precio_oferta_promocion' => 'required|numeric',
+            'precio_oferta_promocion' => 'nullable|numeric',
             'servicios' => 'required',
         ];
         return $rules;

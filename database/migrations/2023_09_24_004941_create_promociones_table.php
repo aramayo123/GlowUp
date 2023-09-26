@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre_promocion'); 
             $table->float('precio_promocion', 8, 2);
-            $table->float('precio_oferta_promocion', 8, 2);
+            $table->float('precio_oferta_promocion', 8, 2)->nullable();
             $table->timestamps();
         });
     }

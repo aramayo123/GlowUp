@@ -13,6 +13,12 @@
 </head>
 <body>
     
+    @php
+        use App\Models\Promocion;
+        use App\Models\Servicio;
+        use App\Models\Servicio_y_Promocion;
+        $promociones = Promocion::all();
+    @endphp
     <div class="principal mx-auto">
         <!-- ACA ES AL REVEZ !-->
         <nav class="py-3 flex justify-between lg:justify-center items-center">
@@ -167,166 +173,44 @@
                             <h1>Combos promocionales</h1>
                         </div>
                     </div>
-                    <div class="package__cards row container">
-                        <div class="card">
-                            <div class="card__title">
-                                <h1>Bronce</h1>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                        @foreach ($promociones as $promocion)
+                            <div class="card">
+                                <div class="card__title">
+                                    <h1>{{ $promocion->nombre_promocion }}</h1>
+                                </div>
+                                <div class="card__items">
+                                    <?php $lista = Servicio_y_Promocion::where('id_promocion', $promocion->id)->get(); ?>
+                                    <div class="h-[130px] overflow-y-auto">
+                                        @foreach($lista as $servicio_provisorio)  
+                                            <?php $servicio = Servicio::findOrFail($servicio_provisorio->id_servicio); ?>
+
+                                            @if ($servicio_provisorio->active)
+                                                <!-- Icon disponible !-->
+                                                <div class="item">
+                                                    <i class='bx bx-message-square-check check__icon' ></i>
+                                                    <p>{{ $servicio->nombre_servicio }}</p>
+                                                </div>
+                                            @else
+                                                <!-- Icon no disponible !-->
+                                                <div class="item">
+                                                    <i class='bx bx-message-square-x x__icon' ></i>
+                                                    <p class="not">{{ $servicio->nombre_servicio }}</p>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                    @if ($promocion->precio_oferta_promocion != null)
+                                        <p class="line-through text-3xl text-center my-2 font-bold">$ {{ $promocion->precio_promocion }}</p>
+                                        <p class="text-4xl text-center my-2 font-bold">$ {{ $promocion->precio_oferta_promocion }}</p>
+                                    @else
+                                        <p class="text-4xl text-center my-4 font-bold">$ {{ $promocion->precio_promocion }}</p>
+                                    @endif
+                                    
+                                    <button class="btn">Quiero este</button>
+                                </div>
                             </div>
-                            <div class="card__items">
-                                <div class="item">
-                                    <i class='bx bx-message-square-check check__icon' ></i>
-                                    <p>Peinado</p>
-                                </div>
-                                <div class="item">
-                                    <i class='bx bx-message-square-check check__icon' ></i>
-                                    <p>Uñas<span>(tradicional francesa)</span></p>
-                                </div>
-                                <div class="item">
-                                    <i class='bx bx-message-square-x x__icon' ></i>
-                                    <p class="not">Depilacion<span>(1 area)</span></p>
-                                </div>
-                                <div class="item">
-                                    <i class='bx bx-message-square-x x__icon' ></i>
-                                    <p class="not">Cejas</p>
-                                </div>
-                                <div class="item">
-                                    <i class='bx bx-message-square-x x__icon' ></i>
-                                    <p class="not">Limpieza de piel</p>
-                                </div>
-                                <div class="item">
-                                    <i class='bx bx-message-square-x x__icon' ></i>
-                                    <p class="not">Opcion generica</p>
-                                </div>
-                                <div class="item">
-                                    <i class='bx bx-message-square-x x__icon' ></i>
-                                    <p class="not">Opcion generica</p>
-                                </div>
-                                <button class="btn">Quiero este</button>
-                            </div>
-                        </div>
-    
-                        <div class="card">
-                            <div class="card__title">
-                                <h1>Plata</h1>
-                            </div>
-                            <div class="card__items">
-                                <div class="item">
-                                    <i class='bx bx-message-square-check check__icon' ></i>
-                                    <p>Peinado</p>
-                                </div>
-                                <div class="item">
-                                    <i class='bx bx-message-square-check check__icon' ></i>
-                                    <p>Opcion generica</p>
-                                </div>
-                                <div class="item">
-                                    <i class='bx bx-message-square-check check__icon' ></i>
-                                    <p>Uñas<span>(tradicional francesa)</span></p>
-                                </div>
-                                <div class="item">
-                                    <i class='bx bx-message-square-check check__icon' ></i>
-                                    <p>Depilacion<span>(1 area)</span></p>
-                                </div>
-                                <div class="item">
-                                    <i class='bx bx-message-square-check check__icon' ></i>
-                                    <p>Opcion generica</p>
-                                </div>
-                                <div class="item">
-                                    <i class='bx bx-message-square-check check__icon' ></i>
-                                    <p>Limpieza de piel</p>
-                                </div>
-                                <div class="item">
-                                    <i class='bx bx-message-square-x x__icon' ></i>
-                                    <p class="not">Opcion generica</p>
-                                </div>
-                                <div class="item">
-                                    <i class='bx bx-message-square-x x__icon' ></i>
-                                    <p class="not">Opcion generica</p>
-                                </div>
-                                <button class="btn">Quiero este</button>
-                            </div>
-                        </div>
-    
-                        <div class="card">
-                            <div class="card__title">
-                                <h1>Oro</h1>
-                            </div>
-                            <div class="card__items">
-                                <div class="item">
-                                    <i class='bx bx-message-square-check check__icon' ></i>
-                                    <p>Peinado</p>
-                                </div>
-                                <div class="item">
-                                    <i class='bx bx-message-square-check check__icon' ></i>
-                                    <p>Opcion generica</p>
-                                </div>
-                                <div class="item">
-                                    <i class='bx bx-message-square-check check__icon' ></i>
-                                    <p>Uñas<span>(tradicional francesa)</span></p>
-                                </div>
-                                <div class="item">
-                                    <i class='bx bx-message-square-check check__icon' ></i>
-                                    <p>Depilacion<span>(1 area)</span></p>
-                                </div>
-                                <div class="item">
-                                    <i class='bx bx-message-square-check check__icon' ></i>
-                                    <p>Opcion generica</p>
-                                </div>
-                                <div class="item">
-                                    <i class='bx bx-message-square-x x__icon' ></i>
-                                    <p class="not">Limpieza de piel</p>
-                                </div>
-                                <div class="item">
-                                    <i class='bx bx-message-square-check check__icon' ></i>
-                                    <p>Opcion generica</p>
-                                </div>
-                                <div class="item">
-                                    <i class='bx bx-message-square-x x__icon' ></i>
-                                    <p class="not">Opcion generica</p>
-                                </div>
-                                <button class="btn">Quiero este</button>
-                            </div>
-                        </div>
-    
-                        <div class="card">
-                            <div class="card__title">
-                                <h1>Diamante</h1>
-                            </div>
-                            <div class="card__items">
-                                <div class="item">
-                                    <i class='bx bx-message-square-check check__icon' ></i>
-                                    <p>Peinado</p>
-                                </div>
-                                <div class="item">
-                                    <i class='bx bx-message-square-check check__icon' ></i>
-                                    <p>Opcion generica</p>
-                                </div>
-                                <div class="item">
-                                    <i class='bx bx-message-square-check check__icon' ></i>
-                                    <p>Uñas<span>(tradicional francesa)</span></p>
-                                </div>
-                                <div class="item">
-                                    <i class='bx bx-message-square-check check__icon' ></i>
-                                    <p>Depilacion<span>(1 area)</span></p>
-                                </div>
-                                <div class="item">
-                                    <i class='bx bx-message-square-check check__icon' ></i>
-                                    <p>Opcion generica</p>
-                                </div>
-                                <div class="item">
-                                    <i class='bx bx-message-square-check check__icon' ></i>
-                                    <p>Limpieza de piel</p>
-                                </div>
-                                <div class="item">
-                                    <i class='bx bx-message-square-check check__icon' ></i>
-                                    <p>Opcion generica</p>
-                                </div>
-                                <div class="item">
-                                    <i class='bx bx-message-square-check check__icon' ></i>
-                                    <p>Opcion generica</p>
-                                </div>
-                                <button class="btn">Quiero este</button>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </section>
