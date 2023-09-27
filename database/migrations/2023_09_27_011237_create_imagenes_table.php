@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('imagen');
             $table->string('fecha');
+            $table->bigInteger('orden')->unsigned();
             $table->timestamps();
         });
     }

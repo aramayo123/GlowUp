@@ -15,5 +15,6 @@ class Imagen extends Model
         'nombre',
         'imagen',
         'fecha',
+        'orden',
     ];
 }

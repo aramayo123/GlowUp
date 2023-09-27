@@ -33,3 +33,4 @@ Route::resource('servicios', ServiciosController::class);
 Route::resource('promociones', PromocionesController::class);
 Route::post('/comentar', [ComentarioController::class, 'CrearComentario'])->name('comentar');
 Route::post('/subirimagen', [ImagenController::class, 'SubirImagen'])->name('update.image');
+Route::delete('/eliminarimagen/{id}', [ImagenController::class, 'BorrarImagen'])->name('delete.image');

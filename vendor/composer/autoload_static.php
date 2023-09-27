@@ -122,6 +122,7 @@ class ComposerStaticInit6fd83ba10c9703456ddf455b65eb63a5
             'League\\Flysystem\\' => 17,
             'League\\Config\\' => 14,
             'League\\CommonMark\\' => 18,
+            'Laraveles\\Spanish\\' => 18,
             'Laravel\\Tinker\\' => 15,
             'Laravel\\SerializableClosure\\' => 28,
             'Laravel\\Sanctum\\' => 16,
@@ -410,6 +411,10 @@ class ComposerStaticInit6fd83ba10c9703456ddf455b65eb63a5
         array (
             0 => __DIR__ . '/..' . '/league/commonmark/src',
         ),
+        'Laraveles\\Spanish\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laraveles/spanish/src',
+        ),
         'Laravel\\Tinker\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/tinker/src',
@@ -538,7 +543,9 @@ class ComposerStaticInit6fd83ba10c9703456ddf455b65eb63a5
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\ComentarioController' => __DIR__ . '/../..' . '/app/Http/Controllers/ComentarioController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\ImagenController' => __DIR__ . '/../..' . '/app/Http/Controllers/ImagenController.php',
         'App\\Http\\Controllers\\PromocionesController' => __DIR__ . '/../..' . '/app/Http/Controllers/PromocionesController.php',
         'App\\Http\\Controllers\\ServiciosController' => __DIR__ . '/../..' . '/app/Http/Controllers/ServiciosController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
@@ -551,8 +558,12 @@ class ComposerStaticInit6fd83ba10c9703456ddf455b65eb63a5
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\ValidateSignature' => __DIR__ . '/../..' . '/app/Http/Middleware/ValidateSignature.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Http\\Requests\\ComentarioRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ComentarioRequest.php',
+        'App\\Http\\Requests\\ImagenRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ImagenRequest.php',
         'App\\Http\\Requests\\PromoRequest' => __DIR__ . '/../..' . '/app/Http/Requests/PromoRequest.php',
         'App\\Http\\Requests\\ServicioRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ServicioRequest.php',
+        'App\\Models\\Comentario' => __DIR__ . '/../..' . '/app/Models/Comentario.php',
+        'App\\Models\\Imagen' => __DIR__ . '/../..' . '/app/Models/Imagen.php',
         'App\\Models\\Promocion' => __DIR__ . '/../..' . '/app/Models/Promocion.php',
         'App\\Models\\Servicio' => __DIR__ . '/../..' . '/app/Models/Servicio.php',
         'App\\Models\\Servicio_y_Promocion' => __DIR__ . '/../..' . '/app/Models/Servicio_y_Promocion.php',
@@ -2753,6 +2764,8 @@ class ComposerStaticInit6fd83ba10c9703456ddf455b65eb63a5
         'Laravel\\Tinker\\Console\\TinkerCommand' => __DIR__ . '/..' . '/laravel/tinker/src/Console/TinkerCommand.php',
         'Laravel\\Tinker\\TinkerCaster' => __DIR__ . '/..' . '/laravel/tinker/src/TinkerCaster.php',
         'Laravel\\Tinker\\TinkerServiceProvider' => __DIR__ . '/..' . '/laravel/tinker/src/TinkerServiceProvider.php',
+        'Laraveles\\Spanish\\Commands\\InstallLang' => __DIR__ . '/..' . '/laraveles/spanish/src/Commands/InstallLang.php',
+        'Laraveles\\Spanish\\SpanishServiceProvider' => __DIR__ . '/..' . '/laraveles/spanish/src/SpanishServiceProvider.php',
         'League\\CommonMark\\CommonMarkConverter' => __DIR__ . '/..' . '/league/commonmark/src/CommonMarkConverter.php',
         'League\\CommonMark\\ConverterInterface' => __DIR__ . '/..' . '/league/commonmark/src/ConverterInterface.php',
         'League\\CommonMark\\Delimiter\\Delimiter' => __DIR__ . '/..' . '/league/commonmark/src/Delimiter/Delimiter.php',

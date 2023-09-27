@@ -26,6 +26,7 @@ class ImagenRequest extends FormRequest
         return [
             'nombre' => 'required|min:5',
             'imagen' => 'required|mimes:jpeg,jpg,png',
+            'orden' => 'required',
         ];
     }
 }
