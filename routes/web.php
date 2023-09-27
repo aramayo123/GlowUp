@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\PromocionesController;
 use App\Http\Controllers\ServiciosController;
+use App\Http\Controllers\ComentarioController;
+use App\Http\Controllers\ImagenController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,7 +23,13 @@ Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'i
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('home');
+Route::get('/admin', function () {
+    return view('admin');
+})->name('admin');
+
 
 Route::resource('servicios', ServiciosController::class);
 Route::resource('promociones', PromocionesController::class);
+Route::post('/comentar', [ComentarioController::class, 'CrearComentario'])->name('comentar');
+Route::post('/subirimagen', [ImagenController::class, 'SubirImagen'])->name('update.image');

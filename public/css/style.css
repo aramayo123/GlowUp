@@ -4,6 +4,7 @@
 :root {
     --header-height: 6.25rem;
 
+
     /*---------------COLLORS -------------------*/
     --main-color: #f7e6df;
     --first-color: #75492b;
@@ -84,6 +85,7 @@ a{
 .section__title{
     margin: 0 auto;
     text-align: center;
+    margin-top: 2%;
 }
 .section__title h1{
     font-family: var(--font-cursive);
@@ -649,3 +651,123 @@ a{
     }
 }
 
+#enviar-comentario{
+    background-color: #75492b;
+}
+#enviar-comentario:hover{
+    background-color: #a85a26;
+}
+#form {
+    width: 250px;
+    margin: 0 auto;
+    height: 50px;
+}
+
+#form p {
+    text-align: center;
+}
+
+#form label {
+    font-size: 20px;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+label {
+    color: grey;
+}
+
+.clasificacion {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+}
+
+label:hover:not(.estrellita,#titulo_comentario),
+label:hover:not(.estrellita) ~ label {
+    color: orange;
+}
+
+input[type="radio"]:checked ~ label {
+    color: orange;
+}
+
+.gallery{
+    width: 900px;
+    display: flex;
+    overflow-x: scroll;
+}
+.gallery div{
+    width: 33%;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 20px;
+    padding: 10px;
+    flex: none;
+}
+.gallery div img {
+    width: 100%;
+    filter: grayscale(100%);
+    transition: transform 0.5s;
+}
+.gallery::-webkit-scrollbar{
+    display: none;
+}
+.gallery-wrap{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 3% auto;
+}
+#backBtn, #nextBtn{
+    width: 50px;
+    cursor: pointer;
+    margin: 40px;
+}
+.gallery div img:hover {
+    filter: grayscale(0);
+    cursor: pointer;
+    transform: scale(1.1);
+}
+#SeccionComentarios{
+    overflow-y: scroll;
+}
+#SeccionComentarios::-webkit-scrollbar{
+    display: none;
+}
+#ImagenesTabla{
+    width: 300px;
+    height: 300px;
+    background-size: cover;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+
+
+
+
+
+
+
+@media screen and (max-width: 600px) {
+    
+    
+    .gallery .modificar{
+        display: flex;
+        width: 100%;
+        overflow-x: hidden;
+        height: 100%;
+    }
+    .modificar img{
+        width: 100%;
+        height: 100%;
+    }
+    .gallery div{
+        display: flex;
+        width: 100%;
+        height: 100%;
+    }
+  }
+  

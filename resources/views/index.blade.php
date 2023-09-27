@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- icon -->
     <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet">
     <!-- estilo css -->
@@ -17,6 +18,7 @@
         use App\Models\Promocion;
         use App\Models\Servicio;
         use App\Models\Servicio_y_Promocion;
+        use App\Models\Comentario;
         $promociones = Promocion::all();
     @endphp
     <div class="principal mx-auto">
@@ -68,31 +70,54 @@
                     </div>
                 </div>
             </section>
-            <section class="gallery section" id="gallery">
-                <div class="gallery__content">
-                    <div class="row">
-                        <div class="section__title">
-                            <h1>Galeria</h1>
-                            <span>Nuestros trabajos realizados</span>
+            <section class="gallery__content">
+                <div class="row">
+                    <div class="section__title">
+                        <h1>Galeria</h1>
+                        <span>Nuestros trabajos realizados</span>
+                    </div>
+                </div>
+                <div class="gallery-wrap" id="gallery">
+                    <img src="{{ asset('img/back.png') }}" alt="" id="backBtn">
+                    <div class="gallery">
+                        <div>
+                            <span><img src="{{ asset('img/image-3.png') }}" alt=""></span>
+                        </div>
+                        <div>
+                            <span><img src="{{ asset('img/image-6.png') }}" alt=""></span>
+                        </div>
+                        <div>
+                            <span><img src="{{ asset('img/image-3.png') }}" alt=""></span>
+                        </div>
+                        <div>
+                            <span><img src="{{ asset('img/image-6.png') }}" alt=""></span>
+                        </div>
+                        <div>
+                            <span><img src="{{ asset('img/image-3.png') }}" alt=""></span>
+                        </div>
+                        <div>
+                            <span><img src="{{ asset('img/image-6.png') }}" alt=""></span>
+                        </div>
+                        <div>
+                            <span><img src="{{ asset('img/image-3.png') }}" alt=""></span>
+                        </div>
+                        <div>
+                            <span><img src="{{ asset('img/image-6.png') }}" alt=""></span>
+                        </div>
+                        <div>
+                            <span><img src="{{ asset('img/image-3.png') }}" alt=""></span>
+                        </div>
+                        <div>
+                            <span><img src="{{ asset('img/image-6.png') }}" alt=""></span>
+                        </div>
+                        <div>
+                            <span><img src="{{ asset('img/image-3.png') }}" alt=""></span>
+                        </div>
+                        <div>
+                            <span><img src="{{ asset('img/image-6.png') }}" alt=""></span>
                         </div>
                     </div>
-                    <div class="gallery__list__img row container">
-                        <div class="gallery__img">
-                            <img src="{{ asset('img/img-insta/imagen_2.jpeg') }}" alt="" width="275">
-                        </div>
-                        
-                        <div class="gallery__img">
-                            <img src="{{ asset('img/img-insta/foto6.png') }}" alt="">
-                        </div>
-                        <div class="gallery__img">
-                            <img src="{{ asset('img/img-insta/foto7.png') }}" alt="">
-                        </div>
-                        <div class="gallery__img">
-                            <img src="{{ asset('img/img-insta/foto8.png') }}" alt="">
-                        </div>
-                    </div>
-                    <button class="btn">Ver mas</button>
-                    
+                    <img src="{{ asset('img/next.png') }}" alt="" id="nextBtn">
                 </div>
             </section>
             <section class="services section" id="services">
@@ -223,82 +248,76 @@
                             <span>Vea lo que nuestros quientes tienen para decir</span>
                         </div>
                     </div>
-                    <div class="testimonials__card container grid">
-                        <div class="testimonials__item flex">
-                            <div class="testimonials__img">
-                                <img src="{{ asset('img/depoimentos/depoimento-1.png') }}" alt="">
+                    <div class="testimonials__card container grid overflow-y-auto h-[500px]" id="SeccionComentarios">
+                        @php
+                            $reversed = Comentario::all();
+                            $comentarios = $reversed->reverse();
+                            $comentarios->all();
+                        @endphp
+                        @foreach ($comentarios as $comentario)
+                            <div class="testimonials__item flex">
+                                <div class="testimonials__img">
+                                    <img src="{{ asset('img/profiles/'.$comentario->avatar) }}" alt="">
+                                </div>
+                                <div class="testimonials__box">
+                                    <div class="testimonials__name">
+                                        <h1>{{ $comentario->autor }}</h1>
+                                        <?php for($i=0; $i < $comentario->estrellas; $i++) { ?>
+                                            <i class='bx bxs-star star__icon' ></i>
+                                        <?php } ?>
+                                    </div>
+                                    <div class="testimonials__descripition">
+                                        <p>{{ $comentario->comentario }}</p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="testimonials__box">
-                                <div class="testimonials__name">
-                                    <h1>Celaena</h1>
-                                    <i class='bx bxs-star star__icon' ></i>
-                                    <i class='bx bxs-star star__icon' ></i>
-                                    <i class='bx bxs-star star__icon' ></i>
-                                    <i class='bx bxs-star star__icon' ></i>
-                                    <i class='bx bxs-star star__icon' ></i>
-                                </div>
-                                <div class="testimonials__descripition">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                                        Quidem quo saepe quibusdam nobis quas minima!</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonials__item flex">
-                            <div class="testimonials__img">
-                                <img src="{{ asset('img/depoimentos/depoimento-2.png') }}" alt="">
-                            </div>
-                            <div class="testimonials__box">
-                                <div class="testimonials__name">
-                                    <h1>Aelin</h1>
-                                    <i class='bx bxs-star star__icon' ></i>
-                                    <i class='bx bxs-star star__icon' ></i>
-                                    <i class='bx bxs-star star__icon' ></i>
-                                    <i class='bx bxs-star star__icon' ></i>
-                                    <i class='bx bxs-star star__icon' ></i>
-                                </div>
-                                <div class="testimonials__descripition">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                                        Quidem quo saepe quibusdam nobis quas minima!</p>
-                                </div>
+                        @endforeach
+                    </div>
+                    @if( $message = Session::get('exito'))
+                        <div class="w-2/5 mx-auto p-2" id="mensaje_exito">
+                            <div class="rounded border-2 border border-black m-5 p-5 bg-white-700 text-green-500">
+                                {{ $message }}
                             </div>
                         </div>
-                        <div class="testimonials__item flex">
-                            <div class="testimonials__img">
-                                <img src="{{ asset('img/depoimentos/depoimento-1.png') }}" alt="">
-                            </div>
-                            <div class="testimonials__box">
-                                <div class="testimonials__name">
-                                    <h1>Luciana</h1>
-                                    <i class='bx bxs-star star__icon' ></i>
-                                    <i class='bx bxs-star star__icon' ></i>
-                                    <i class='bx bxs-star star__icon' ></i>
-                                    <i class='bx bxs-star star__icon' ></i>
-                                    <i class='bx bxs-star star__icon' ></i>
+                    @endif
+                    
+                    <div class="w-2/5 mx-auto mt-[50px] p-2">
+                        <div class="rounded border-2 border border-black m-5 p-5 bg-white-700 text-black">
+                            <form method="post" action="{{ route('comentar') }}" >
+                                @csrf
+                                <div class="mb-6">
+                                    <label for="comentario" class="block mb-2 text-xl font-medium">¿Qué te pareció mi estetica?</label>
+                                    <input type="text" id="comentario" name="comentario" value="{{ old('comentario') }}" class="border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="Dejanos un comentario...">
+                                    @error('comentario')
+                                        <p class="pt-4 text-red-500">{{ $message }}</p>
+                                    @enderror
                                 </div>
-                                <div class="testimonials__descripition">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                                        Quidem quo saepe quibusdam nobis quas minima!</p>
+
+                                <div class="mb-6">
+                                    <label for="autor" class="block mb-2 text-xl font-medium">Nombre completo</label>
+                                    <input type="text" id="autor" name="autor" value="{{ old('autor') }}" class="border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="Dinos quien eres...">
+                                    @error('autor')
+                                        <p class="pt-4 text-red-500">{{ $message }}</p>
+                                    @enderror
                                 </div>
-                            </div>
-                        </div>
-                        <div class="testimonials__item flex">
-                            <div class="testimonials__img">
-                                <img src="{{ asset('img/depoimentos/depoimento-2.png') }}" alt="">
-                            </div>
-                            <div class="testimonials__box">
-                                <div class="testimonials__name">
-                                    <h1>Patricia</h1>
-                                    <i class='bx bxs-star star__icon' ></i>
-                                    <i class='bx bxs-star star__icon' ></i>
-                                    <i class='bx bxs-star star__icon' ></i>
-                                    <i class='bx bxs-star star__icon' ></i>
-                                    <i class='bx bxs-star star__icon' ></i>
-                                </div>
-                                <div class="testimonials__descripition">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                                        Quidem quo saepe quibusdam nobis quas minima!</p>
-                                </div>
-                            </div>
+                                
+                                <p class="clasificacion">
+                                    <input id="radio1" type="radio" name="estrellas" value="5" class="radios">
+                                    <label for="radio1" class="text-xl">★</label>
+                                    <input id="radio2" type="radio" name="estrellas" value="4" class="radios">
+                                    <label for="radio2" class="text-lg">★</label>
+                                    <input id="radio3" type="radio" name="estrellas" value="3" class="radios">
+                                    <label for="radio3" class="text-base">★</label>
+                                    <input id="radio4" type="radio" name="estrellas" value="2" class="radios">
+                                    <label for="radio4" class="text-sm">★</label>
+                                    <input id="radio5" type="radio" name="estrellas" value="1" class="radios">
+                                    <label for="radio5" class="text-xs">★</label>
+                                </p>
+                                @error('estrellas')
+                                    <p class="p-2 text-right text-red-500">{{ $message }}</p>
+                                @enderror
+                                <button type="submit" id="enviar-comentario" class=" text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:focus:ring-blue-800">Comentar</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -336,6 +355,7 @@
 
     
 </body>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 <script>
     const menuButtom = document.querySelector('#mobile-menu');
     if(menuButtom)
@@ -343,5 +363,34 @@
             const menu = document.querySelector('.mobile-links');
             menu.classList.toggle('hidden');
         })
+
+    const mensajes = document.querySelector('#mensaje_exito');
+    var lastTimeout;
+    if(mensajes){
+        clearTimeout(lastTimeout);
+        lastTimeout = setTimeout(() => {
+            mensajes.classList.add("hidden");
+        }, 3000);
+    }
+</script>
+
+<script>
+    let scrollContainer = document.querySelector('.gallery');
+    let backBtn = document.querySelector('#backBtn');
+    let nextBtn = document.querySelector('#nextBtn');
+    
+    scrollContainer.addEventListener( "whell", (evt) =>{
+        evt.preventDefault();
+        scrollContainer.scrollLeft += evt.deltaY;
+        scrollContainer.style.scrollBehavior = "auto";
+    })
+    nextBtn.addEventListener("click", () => {
+        scrollContainer.style.scrollBehavior = "smooth";
+        scrollContainer.scrollLeft += 300;
+    })
+    backBtn.addEventListener("click", () => {
+        scrollContainer.style.scrollBehavior = "smooth";
+        scrollContainer.scrollLeft -= 300;
+    })
 </script>
 </html>
