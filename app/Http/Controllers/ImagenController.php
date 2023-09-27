@@ -11,14 +11,10 @@ class ImagenController extends Controller
 {
     //
     public function SubirImagen(ImagenRequest $request){
-        
-        if($request->imagen != null){
-            $image = time().".".$request->imagen->extension();
-            $request->imagen->move(public_path("img/trabajos/"), $image);
-        }
+        $imagen = time().".".$request->imagen->extension();
+        $request->imagen->move(public_path("img/trabajos/"), $imagen);
         $date = Carbon::now();
         $nombre = $request->nombre;
-        $imagen = $request->imagen;
         $fecha = $date->isoFormat('dddd D \d\e MMMM \d\e\l Y');
         $hora = $date->toTimeString();
     

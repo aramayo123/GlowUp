@@ -19,7 +19,9 @@
         use App\Models\Servicio;
         use App\Models\Servicio_y_Promocion;
         use App\Models\Comentario;
+        use App\Models\Imagen;
         $promociones = Promocion::all();
+        $imagenes = Imagen::all();
     @endphp
     <div class="principal mx-auto">
         <!-- ACA ES AL REVEZ !-->
@@ -80,42 +82,11 @@
                 <div class="gallery-wrap" id="gallery">
                     <img src="{{ asset('img/back.png') }}" alt="" id="backBtn">
                     <div class="gallery">
-                        <div>
-                            <span><img src="{{ asset('img/image-3.png') }}" alt=""></span>
-                        </div>
-                        <div>
-                            <span><img src="{{ asset('img/image-6.png') }}" alt=""></span>
-                        </div>
-                        <div>
-                            <span><img src="{{ asset('img/image-3.png') }}" alt=""></span>
-                        </div>
-                        <div>
-                            <span><img src="{{ asset('img/image-6.png') }}" alt=""></span>
-                        </div>
-                        <div>
-                            <span><img src="{{ asset('img/image-3.png') }}" alt=""></span>
-                        </div>
-                        <div>
-                            <span><img src="{{ asset('img/image-6.png') }}" alt=""></span>
-                        </div>
-                        <div>
-                            <span><img src="{{ asset('img/image-3.png') }}" alt=""></span>
-                        </div>
-                        <div>
-                            <span><img src="{{ asset('img/image-6.png') }}" alt=""></span>
-                        </div>
-                        <div>
-                            <span><img src="{{ asset('img/image-3.png') }}" alt=""></span>
-                        </div>
-                        <div>
-                            <span><img src="{{ asset('img/image-6.png') }}" alt=""></span>
-                        </div>
-                        <div>
-                            <span><img src="{{ asset('img/image-3.png') }}" alt=""></span>
-                        </div>
-                        <div>
-                            <span><img src="{{ asset('img/image-6.png') }}" alt=""></span>
-                        </div>
+                        @foreach ($imagenes as $imagen)
+                            <div>
+                                <span><img src="{{ asset('img/trabajos/'.$imagen->imagen) }}" alt=""></span>
+                            </div>
+                        @endforeach
                     </div>
                     <img src="{{ asset('img/next.png') }}" alt="" id="nextBtn">
                 </div>

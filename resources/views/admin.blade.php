@@ -81,7 +81,7 @@
                   </button>
               </div>
               <!-- Modal body -->
-              <form action="{{ route('update.image') }}" method="post">
+              <form action="{{ route('update.image') }}" method="post" enctype="multipart/form-data">
                 <div class="p-6 space-y-6">
                     @csrf
                     <div class="grid gap-4 mb-4 sm:grid-cols-1">
