@@ -325,9 +325,6 @@ a{
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
 }
-.services__content__descripion .box{
-    padding: 20px;
-}
 .services__content__descripion .box .inner img{
     width: 90px;
     margin-bottom: var(--mb-1);

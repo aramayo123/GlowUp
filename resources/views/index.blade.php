@@ -80,7 +80,7 @@
                         <span>Nuestros trabajos realizados</span>
                     </div>
                 </div>
-                <div class="gallery-wrap block" id="gallery">
+                <div class="gallery-wrap" id="gallery">
                     @if (count($imagenes))
                         <img src="{{ asset('img/back.png') }}" alt="" id="backBtn">
                         <div class="gallery">
@@ -94,33 +94,6 @@
                     @else
                         <p class="text-2xl font-bold text-center my-10">No hay fotos publicadas</p>
                     @endif
-                </div>
-                <div class="w-full mx-auto flex flex-cols-3">
-                    <div class="w-3/12">
-                        <button type="button" class="flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-                            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                                <svg class="w-4 h-4 text-white dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
-                                </svg>
-                                <span class="sr-only">Previous</span>
-                            </span>
-                        </button>
-                    </div>
-                    <div class="w-3/4 mx-auto flex flex-cols-1 border-2 border-gray-400 p-4 rounded">
-                        <div id="player">
-                            
-                        </div>
-                    </div>
-                    <div class="w-3/12">
-                        <button type="button" class="flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-                            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                                <svg class="w-4 h-4 text-white dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-                                </svg>
-                                <span class="sr-only">Next</span>
-                            </span>
-                        </button>
-                    </div>
                 </div>
             </section>
             <section class="services section" id="services">
@@ -383,9 +356,6 @@
         }, 3000);
     }
     
-</script>
-
-<script>
     let scrollContainer = document.querySelector('.gallery');
     let backBtn = document.querySelector('#backBtn');
     let nextBtn = document.querySelector('#nextBtn');
@@ -406,49 +376,5 @@
             scrollContainer.style.scrollBehavior = "smooth";
             scrollContainer.scrollLeft -= 300;
         })
-    
-    // 2. This code loads the IFrame Player API code asynchronously.
-    var tag = document.createElement('script');
-
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-    // 3. This function creates an <iframe> (and YouTube player)
-    //    after the API code downloads.
-    var player;
-    function onYouTubeIframeAPIReady() {
-        player = new YT.Player('player', {
-            height: '390',
-            width: '640',
-            videoId: 'M7lc1UVf-VE',
-            playerVars: {
-            'playsinline': 1
-            },
-            events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
-            }
-        });
-    }
-
-    // 4. The API will call this function when the video player is ready.
-    function onPlayerReady(event) {
-    event.target.playVideo();
-    }
-
-    // 5. The API calls this function when the player's state changes.
-    //    The function indicates that when playing a video (state=1),
-    //    the player should play for six seconds and then stop.
-    var done = false;
-    function onPlayerStateChange(event) {
-    if (event.data == YT.PlayerState.PLAYING && !done) {
-        setTimeout(stopVideo, 6000);
-        done = true;
-    }
-    }
-    function stopVideo() {
-    player.stopVideo();
-    }
 </script>
 </html>
