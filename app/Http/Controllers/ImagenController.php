@@ -34,4 +34,13 @@ class ImagenController extends Controller
         Imagen::destroy($imagen->id);
         return redirect()->route('admin')->with('exito', 'Imagen borrada con exito!');
     }
+    public function CambiarOrdenImagen (Request $request, $id){   
+        $request->validate([
+            'orden' => ['required'],
+        ]);
+        $imagen = Imagen::findOrFail($id);
+        $imagen->orden = $request->orden;
+        $imagen->update();
+        return redirect()->route('admin')->with('exito', 'Orden de la imagen actualizada con exito!');
+    }
 }

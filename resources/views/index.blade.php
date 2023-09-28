@@ -22,7 +22,7 @@
         use App\Models\Comentario;
         use App\Models\Imagen;
         $promociones = Promocion::all();
-        $imagenes = Imagen::orderBy('orden', 'desc')->get();
+        $imagenes = Imagen::orderBy('orden', 'asc')->get();
     @endphp
     <div class="principal mx-auto">
         <!-- ACA ES AL REVEZ !-->

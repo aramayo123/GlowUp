@@ -6,7 +6,7 @@
 @endphp
 
 <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5 antialiased mx-auto" style="min-height: 688px;">
-    <div class="w-2/5 mx-auto mt-10 justify-center items-center">
+    <div class="w-full sm:w-4/5 md:w-3/5 lg:w-3/5 xl:w-2/5 mx-auto mt-10 justify-center items-center">
         <div class="w-full max-w-2xl max-h-full">
             <div class=" p-4 bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5">
                 <div class="flex justify-between items-center pb-4 mb-4 rounded-t border-b sm:mb-5 dark:border-gray-600">
@@ -45,7 +45,7 @@
                         </div>
                         <div>
                             <h3 class="mb-4 font-semibold text-gray-900 dark:text-white">Servicios</h3>
-                            <ul class="items-center w-full text-sm font-medium text-gray-900 rounded-lg grid grid-cols-3 gap-3 dark:text-white">
+                            <ul class="items-center w-full text-sm font-medium text-gray-900 rounded-lg grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 dark:text-white">
                                 <?php
                                     $cont_1 = 0;
                                     $lista = Servicio_y_Promocion::where('id_promocion', $promocion->id)->get();

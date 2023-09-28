@@ -32,5 +32,6 @@ Route::get('/admin', function () {
 Route::resource('servicios', ServiciosController::class);
 Route::resource('promociones', PromocionesController::class);
 Route::post('/comentar', [ComentarioController::class, 'CrearComentario'])->name('comentar');
-Route::post('/subirimagen', [ImagenController::class, 'SubirImagen'])->name('update.image');
+Route::post('/subirimagen', [ImagenController::class, 'SubirImagen'])->name('upload.image');
 Route::delete('/eliminarimagen/{id}', [ImagenController::class, 'BorrarImagen'])->name('delete.image');
+Route::put('/actualizarimagen/{id}', [ImagenController::class, 'CambiarOrdenImagen'])->name('update.image');

@@ -266,7 +266,7 @@
     function MostrarUpdate(servicio){
         modal_update.innerHTML = `
             <!-- Modal body -->
-            <form action="servicios/${servicio.id}" method="post">
+            <form action="{{ url('/') }}/servicios/${servicio.id}" method="post">
                 @csrf
                 @method('patch')
                 <div class="grid gap-4 mb-4 sm:grid-cols-2">
@@ -286,7 +286,7 @@
     }
     function MostrarEliminar(servicio){
         modal_delete.innerHTML = `
-            <form action="servicios/${servicio.id}" method="post">
+            <form action="{{ url('/') }}/servicios/${servicio.id}" method="post">
                 @csrf
                 @method('delete')
                 <button type="submit" class="py-2 px-3 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-900">Si, Eliminar</button>

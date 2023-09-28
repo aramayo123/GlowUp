@@ -242,14 +242,14 @@
                     </div>
                     <div>
                         <label for="precio_oferta_promocion" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Precio promocional</label>
-                        <input type="number" name="precio_oferta_promocion" id="precio_oferta_promocion" value="{{ old('precio_oferta_promocion') }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="$2999" required="">
+                        <input type="number" name="precio_oferta_promocion" id="precio_oferta_promocion" value="{{ old('precio_oferta_promocion') }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="$2999">
                         @error('precio_oferta_promocion')
                             <p class="pt-4 text-red-500">{{ $message }}</p>
                         @enderror
                     </div>
                     <div>
                         <h3 class="mb-4 font-semibold text-gray-900 dark:text-white">Servicios</h3>
-                        <ul class="items-center w-full text-sm font-medium text-gray-900 rounded-lg grid grid-cols-3 gap-3 dark:text-white">
+                        <ul class="items-center w-full text-sm font-medium text-gray-900 rounded-lg grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 dark:text-white">
                             @php
                                 $cont = 0;
                             @endphp
@@ -289,7 +289,7 @@
     const modal_delete = document.querySelector('#MostrarModalDelete');
     function MostrarDelete(promocion){
         modal_delete.innerHTML = `
-            <form action="/promociones/${promocion.id}" method="post">
+            <form action="{{ url('/') }}/promociones/${promocion.id}" method="post">
                 @csrf
                 @method('delete')
                 <button type="submit" class="py-2 px-3 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-900">Si, Eliminar</button>
