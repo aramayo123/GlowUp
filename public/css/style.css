@@ -332,7 +332,6 @@ a{
 .services__content__descripion .box .inner{
     font-size: var(--h3-font-size);
     font-weight: var(--font-semi-bold);
-    text-transform: capitalize;
     color: var(--first-color);
     padding: 10px;
     position: relative;
@@ -367,7 +366,7 @@ a{
 .package{
     width: 100%;
     background-color: var(--main-color);
-    border-radius: 0 300px;
+    border-radius: 300px 300px;
 }
 .package__cards{
     margin-top: var(--mb-2-5);
@@ -455,7 +454,7 @@ a{
 /* TESTIMONIALS */
 .testimonials{
     background-color: var(--main-color);
-    border-radius: 300px 0;
+    border-radius: 300px 300px;
 }
 .testimonials__content{
     padding: 2rem;
@@ -716,11 +715,7 @@ input[type="radio"]:checked ~ label {
     justify-content: center;
     margin: 3% auto;
 }
-#backBtn, #nextBtn{
-    width: 50px;
-    cursor: pointer;
-    margin: 40px;
-}
+
 .gallery div img:hover {
     filter: grayscale(0);
     cursor: pointer;
@@ -733,7 +728,9 @@ input[type="radio"]:checked ~ label {
     display: none;
 }
 
-
+#backBtn,#nextBtn{
+    margin: 40px;
+}
 
 
 

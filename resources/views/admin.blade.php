@@ -7,7 +7,7 @@
 
 <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5 antialiased" style="min-height: 688px;">
     <br><br><br>
-    <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
+    <div class="mx-auto w-full md:max-w-screen-xl px-4 lg:px-12">
         <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
             <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
                 <div class="w-full mx-auto text-gray-300 pt-10">
@@ -41,10 +41,10 @@
                 </div>
             @endif
             @if (count($imagenes))
-                <div class="px-10">
+                <div class="px-2 md:px-10">
                     <div class="w-full p-5 border-2 border-sky-500 mb-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">                    
                         @foreach($imagenes as $imagen)
-                            <div class="max-w-[300px] mx-auto bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                            <div class="max-w-full md:max-w-[300px] mx-auto bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                                     <div class="p-5">
                                         <img class="rounded-t-lg" src="{{ asset('img/trabajos/'.$imagen->imagen) }}" alt="" />
                                     </div>

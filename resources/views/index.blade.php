@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="{{ asset('img/logo.png') }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -59,7 +60,7 @@
             </div>
         </nav>
         <main>
-            <section class="hero">
+            <section class="hero" id="hero">
                 <div class="container">
                     <div class="row">
                         <div class="hero__img">
@@ -82,15 +83,15 @@
                 </div>
                 <div class="gallery-wrap" id="gallery">
                     @if (count($imagenes))
-                        <img src="{{ asset('img/back.png') }}" alt="" id="backBtn">
-                        <div class="gallery">
+                        <img src="{{ asset('img/back.png') }}" alt="" class="w-[50px] md:w-1/12 hover:cursor-pointer" id="backBtn">
+                        <div class="gallery w-full">
                             @foreach ($imagenes as $imagen)
                                 <div>
                                     <span><img src="{{ asset('img/trabajos/'.$imagen->imagen) }}" alt=""></span>
                                 </div>
                             @endforeach
                         </div>
-                        <img src="{{ asset('img/next.png') }}" alt="" id="nextBtn">
+                        <img src="{{ asset('img/next.png') }}" alt="" class="w-[50px] md:w-1/12 cursor-pointer" id="nextBtn">
                     @else
                         <p class="text-2xl font-bold text-center my-10">No hay fotos publicadas</p>
                     @endif
@@ -151,7 +152,7 @@
 
                         <div class="box">
                             <div class="inner">
-                                <img src="{{ asset('img/servicios/permanente_pestañas.png') }}" alt="">
+                                <img src="{{ asset('img/servicios/permanente_pestanas.png') }}" alt="">
                                 <p>Lifting y permanente de pestañas</p>
                             </div>
                         </div>
@@ -209,7 +210,7 @@
                                             <p class="text-4xl text-center mx-auto my-4 font-bold">$ {{ $promocion->precio_promocion }}</p>
                                         @endif
                                         
-                                        <button class="btn">Quiero este</button>
+                                        <a class="btn" href="#hero">Quiero este</a>
                                     </div>
                                 </div>
                             @endforeach
@@ -256,50 +257,39 @@
                             <p class="text-2xl font-bold text-center">No hay comentarios publicados</p>
                         @endforelse
                     </div>
-                    @if( $message = Session::get('exito'))
-                        <div class="w-2/5 mx-auto p-2" id="mensaje_exito">
-                            <div class="rounded border-2 border border-black m-5 p-5 bg-white-700 text-green-500">
-                                {{ $message }}
-                            </div>
-                        </div>
-                    @endif
-                    
+                    <div class="w-2/5 mx-auto p-2 hidden" id="mensaje_exito">
+                        
+                    </div>
                     <div class="w-full sm:w-4/5 md:w-3/5 lg:w-3/5 xl:w-2/5 mx-auto mt-[50px] p-2">
                         <div class="rounded border-2 border border-black m-5 p-5 bg-white-700 text-black">
-                            <form method="post" action="{{ route('comentar') }}" >
-                                @csrf
+                           
+                            <form id="crear-comentario-form">
                                 <div class="mb-6">
                                     <label for="comentario" class="block mb-2 text-xl font-medium">¿Qué te pareció mi estetica?</label>
                                     <input type="text" id="comentario" name="comentario" value="{{ old('comentario') }}" class="border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="Dejanos un comentario...">
-                                    @error('comentario')
-                                        <p class="pt-4 text-red-500">{{ $message }}</p>
-                                    @enderror
+                                    <p class="pt-4 text-red-500" id="comentario_error"></p>
                                 </div>
 
                                 <div class="mb-6">
                                     <label for="autor" class="block mb-2 text-xl font-medium">Nombre completo</label>
                                     <input type="text" id="autor" name="autor" value="{{ old('autor') }}" class="border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="Dinos quien eres...">
-                                    @error('autor')
-                                        <p class="pt-4 text-red-500">{{ $message }}</p>
-                                    @enderror
+                                    <p class="pt-4 text-red-500" id="autor_error"></p>
                                 </div>
                                 
                                 <p class="clasificacion">
-                                    <input id="radio1" type="radio" name="estrellas" value="5" class="radios">
+                                    <input id="radio1" type="radio" name="estrellas" value="5" class="radios estrellitas">
                                     <label for="radio1" class="text-xl">★</label>
-                                    <input id="radio2" type="radio" name="estrellas" value="4" class="radios">
+                                    <input id="radio2" type="radio" name="estrellas" value="4" class="radios estrellitas">
                                     <label for="radio2" class="text-lg">★</label>
-                                    <input id="radio3" type="radio" name="estrellas" value="3" class="radios">
+                                    <input id="radio3" type="radio" name="estrellas" value="3" class="radios estrellitas">
                                     <label for="radio3" class="text-base">★</label>
-                                    <input id="radio4" type="radio" name="estrellas" value="2" class="radios">
+                                    <input id="radio4" type="radio" name="estrellas" value="2" class="radios estrellitas">
                                     <label for="radio4" class="text-sm">★</label>
-                                    <input id="radio5" type="radio" name="estrellas" value="1" class="radios">
+                                    <input id="radio5" type="radio" name="estrellas" value="1" class="radios estrellitas">
                                     <label for="radio5" class="text-xs">★</label>
                                 </p>
-                                @error('estrellas')
-                                    <p class="p-2 text-right text-red-500">{{ $message }}</p>
-                                @enderror
-                                <button type="submit" id="enviar-comentario" class=" text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:focus:ring-blue-800">Comentar</button>
+                                <p class="p-2 text-right text-red-500" id="estrellas_error"></p>
+                                <button type="button" onclick="EnviarFormulario()" id="enviar-comentario" class=" text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:focus:ring-blue-800">Comentar</button>
                             </form>
                         </div>
                     </div>
@@ -347,34 +337,122 @@
             menu.classList.toggle('hidden');
         })
 
-    const mensajes = document.querySelector('#mensaje_exito');
-    var lastTimeout;
-    if(mensajes){
-        clearTimeout(lastTimeout);
-        lastTimeout = setTimeout(() => {
-            mensajes.classList.add("hidden");
-        }, 3000);
-    }
-    
     let scrollContainer = document.querySelector('.gallery');
     let backBtn = document.querySelector('#backBtn');
     let nextBtn = document.querySelector('#nextBtn');
+    scrollContainer.addEventListener( "whell", (evt) =>{
+        evt.preventDefault();
+        scrollContainer.scrollLeft += evt.deltaY;
+        scrollContainer.style.scrollBehavior = "auto";
+    })
+    nextBtn.addEventListener("click", () => {
+        scrollContainer.style.scrollBehavior = "smooth";
+        scrollContainer.scrollLeft += 300;
+    })
+    backBtn.addEventListener("click", () => {
+        scrollContainer.style.scrollBehavior = "smooth";
+        scrollContainer.scrollLeft -= 300;
+    })
     
-    if(scrollContainer)
-        scrollContainer.addEventListener( "whell", (evt) =>{
-            evt.preventDefault();
-            scrollContainer.scrollLeft += evt.deltaY;
-            scrollContainer.style.scrollBehavior = "auto";
-        })
-    if(nextBtn)
-        nextBtn.addEventListener("click", () => {
-            scrollContainer.style.scrollBehavior = "smooth";
-            scrollContainer.scrollLeft += 300;
-        })
-    if(backBtn)
-        backBtn.addEventListener("click", () => {
-            scrollContainer.style.scrollBehavior = "smooth";
-            scrollContainer.scrollLeft -= 300;
-        })
+    async function CargarComentarios(){
+        try{
+            const urlRaiz = window.location.origin+'/comentarios';
+            const opciones = {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                },
+                method: 'GET',
+            };
+            const res = await fetch(urlRaiz, opciones);
+            if(!res.ok)
+                throw new Error('Algo salio mal');
+            var data = await res.json(); // convertir a array
+            const Seccion = document.querySelector('#SeccionComentarios');
+            Seccion.innerHTML = ``;
+            const comentarios = Object.keys(data).map((clave) => data[clave]);
+            comentarios.forEach(comentario => {
+                Seccion.innerHTML += `
+                <div class="testimonials__item flex min-h-[150px] max-h-[150px]">
+                    <div class="testimonials__img">
+                        <img src="{{ asset('img/profiles/') }}/${comentario.avatar}" alt="">
+                    </div>
+                    <div class="testimonials__box">
+                        <div class="testimonials__name">
+                            <h1>${ comentario.autor }</h1>
+                            <?php for($i=0; $i < '${ comentario.estrellas }'; $i++) { ?>
+                                <i class='bx bxs-star star__icon' ></i>
+                            <?php } ?>
+                        </div>
+                        <div class="testimonials__descripition">
+                            <p>${comentario.comentario}</p>
+                        </div>
+                    </div>
+                </div>`;
+            });
+        }catch (error){
+            console.log(error)
+        }
+    }
+
+    async function EnviarFormulario() { 
+        try{
+            const urlRaiz = window.location.origin;
+            var comentario = document.querySelector('#comentario').value;
+            var autor = document.querySelector('#autor').value;
+            var estrellas = null;
+            var ArrayEstrellas = document.querySelectorAll('.estrellitas');
+            ArrayEstrellas.forEach(element => {
+                if(element.checked){
+                    estrellas = element.value;
+                }
+            });
+            const datos = {
+                autor: autor,
+                comentario: comentario,
+                estrellas: estrellas
+            }
+            const opciones = {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                },
+                method: 'POST',
+                body: JSON.stringify(datos)
+            };
+            const res = await fetch(urlRaiz+'/comentar', opciones);
+            if(!res.ok)
+                throw new Error('Algo salio mal');
+            const data = await res.json();
+            document.querySelector('#autor_error').innerHTML = "";
+            document.querySelector('#comentario_error').innerHTML = "";
+            document.querySelector('#estrellas_error').innerHTML = "";
+            if(data.status == 200){
+                //console.log(data.message)
+                const form = document.querySelector('#crear-comentario-form');
+                form.reset();
+                const mensajes = document.querySelector('#mensaje_exito');
+                mensajes.classList.remove("hidden");
+                mensajes.innerHTML = `
+                <div class="rounded border-2 border border-black m-5 p-5 bg-white-700 text-green-500">
+                    ${ data.message }
+                </div>`;
+                setTimeout( () => { 
+                    mensajes.classList.add("hidden")
+                    location.href = urlRaiz;
+                }, 3000 );
+                CargarComentarios();
+            }else{
+                if(data.errors.autor)
+                    document.querySelector('#autor_error').innerHTML = data.errors.autor;
+                if(data.errors.comentario)
+                    document.querySelector('#comentario_error').innerHTML = data.errors.comentario;
+                if(data.errors.estrellas)
+                    document.querySelector('#estrellas_error').innerHTML = data.errors.estrellas;
+            }
+        }catch (error){
+            console.log(error)
+        }
+    }
 </script>
 </html>
