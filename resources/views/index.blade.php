@@ -69,7 +69,7 @@
                         <div class="hero__content">
                             <h1>Tu gran dia<br><span>con estilo</span></h1>
                             <p>Venga a visitar nuestro centro de belleza y aprovecha para agendar tu cita.</p>
-                            <a href="https://wa.me/+5493875318295" target="_blank" class="btn btn__outline"><i class="bx bxl-whatsapp"></i>Agende su cita</a>
+                            <a href="https://wa.me/{{ env('WHATSAPP') }}" target="_blank" class="btn btn__outline"><i class="bx bxl-whatsapp"></i>Agende su cita</a>
                         </div>
                     </div>
                 </div>
@@ -210,7 +210,7 @@
                                             <p class="text-4xl text-center mx-auto my-4 font-bold">$ {{ $promocion->precio_promocion }}</p>
                                         @endif
                                         
-                                        <a class="btn" href="#hero">Quiero este</a>
+                                        <a class="btn" href="https://wa.me/{{ env('WHATSAPP') }}">Quiero este</a>
                                     </div>
                                 </div>
                             @endforeach
@@ -301,9 +301,9 @@
                 <div class="footer__data">
                     <h1><a href="#"><img src="{{ asset('img/coollogo_com-214171040.png') }}" alt=""></a></h1>
                     <div class="footer__data-social">
-                        <a href=""><i class='bx bxl-facebook social__icon'></i></a>
-                        <a href=""><i class='bx bxl-instagram social__icon' ></i></a>
-                        <a href=""><i class='bx bxl-whatsapp social__icon' ></i></a>
+                        <a href="https://www.facebook.com/{{ env('FACEBOOK') }}"><i class='bx bxl-facebook social__icon'></i></a>
+                        <a href="https://www.instagram.com/{{ env('INSTAGRAM') }}"><i class='bx bxl-instagram social__icon' ></i></a>
+                        <a href="https://wa.me/{{ env('WHATSAPP') }}"><i class='bx bxl-whatsapp social__icon' ></i></a>
                     </div>
                 </div>
                 <div class="footer__data">
